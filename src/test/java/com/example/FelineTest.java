@@ -20,7 +20,7 @@ public class FelineTest {
         this.kittensNum = kittensNum;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные: {0}")
     public static Collection<Object> getKittensNumData() {
         return Arrays.asList(new Object[]{
                 1, 2, 3, 4, 5
@@ -32,7 +32,7 @@ public class FelineTest {
         Feline feline = new Feline();
         List<String> expected = List.of("Животные", "Птицы", "Рыба");
         List<String> actual = feline.eatMeat();
-        assertEquals(expected, actual);
+        assertEquals("Список еды некорректный для Feline", expected, actual);
     }
 
     @Test
@@ -40,7 +40,7 @@ public class FelineTest {
         Feline feline = new Feline();
         String expected = "Кошачьи";
         String actual = feline.getFamily();
-        assertEquals(expected, actual);
+        assertEquals("Неверное семейство для Feline", expected, actual);
     }
 
     @Test
@@ -48,14 +48,13 @@ public class FelineTest {
         Feline feline = new Feline();
         int expected = 1;
         int actual = feline.getKittens();
-        assertEquals(expected, actual);
+        assertEquals("Неверное количество котят", expected, actual);
     }
 
     @Test
     public void testGetKittens() {
         Feline feline = new Feline();
-        int expected = kittensNum;
         int actual = feline.getKittens(kittensNum);
-        assertEquals(expected, actual);
+        assertEquals("Неверное количество котят", kittensNum, actual);
     }
 }

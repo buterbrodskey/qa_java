@@ -7,7 +7,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionTest {
@@ -18,19 +19,15 @@ public class LionTest {
     @Test
     public void doesHaveManeIfSexIsMan() throws Exception {
         String sex = "Самец";
-        boolean expectedManeStatus = true;
         Lion lion = new Lion(sex, feline);
-        boolean actualManeStatus = lion.doesHaveMane();
-        assertEquals(expectedManeStatus, actualManeStatus);
+        assertTrue("У самца должна быть грива", lion.doesHaveMane());
     }
 
     @Test
     public void doesntHaveManeIfSexIsWomanTest() throws Exception {
         String sex = "Самка";
-        boolean expectedManeStatus = false;
         Lion lion = new Lion(sex, feline);
-        boolean actualManeStatus = lion.doesHaveMane();
-        assertEquals(expectedManeStatus, actualManeStatus);
+        assertFalse("У самки не должно быть гривы", lion.doesHaveMane());
     }
 
     @Test
