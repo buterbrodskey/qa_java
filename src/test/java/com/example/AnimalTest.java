@@ -21,7 +21,7 @@ public class AnimalTest {
         this.expectedFoodList = expectedFoodList;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные: {0}, {1}")
     public static Collection<Object[]> getAnimalKindsData() {
         return Arrays.asList(new Object[][]{
                 {"Хищник", List.of("Животные", "Птицы", "Рыба")},
@@ -33,6 +33,10 @@ public class AnimalTest {
     public void getFoodTestDependAnimalKindTest() throws Exception {
         Animal animal = new Animal();
         List<String> actualFoodList = animal.getFood(animalKind);
-        Assert.assertEquals(actualFoodList, expectedFoodList);
+        Assert.assertEquals(
+                "Списки еды не корректны для животных вида " + animalKind,
+                expectedFoodList,
+                actualFoodList
+        );
     }
 }
